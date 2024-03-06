@@ -1,12 +1,19 @@
+import { faker } from "@faker-js/faker";
+
 describe("Visit Tredgate site", () => {
   const url = "https://tredgate.com/eshop/index.php?route=account/register";
 
   // Setting variables for filled data
-  const firstName = "Adriana";
-  const lastName = "Brezničanová";
-  const email = "breznicanova.adriana@email.cz";
-  const telephone = "737000333";
-  const password = "abcd1234";
+  const firstName = faker.person.firstName();
+  const lastName = faker.person.lastName();
+  const email = faker.internet.email({
+    firstName: firstName,
+    lastName: lastName,
+    provider: "email.cz",
+    allowSpecialCharacters: true,
+  });
+  const telephone = faker.phone.number("+420#########");
+  const password = faker.internet.password({ length: 12 });
 
   it("Register Account", () => {
     cy.visit(url);
