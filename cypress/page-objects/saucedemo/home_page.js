@@ -1,22 +1,31 @@
+import { LoginPage } from "./login_page";
+import { ShoppingBag } from "./shopping_bag";
+
 export class HomePage {
   constructor() {
-    this.storeUrl = "https://www.saucedemo.com/inventory.html";
-    this.addProductButton = '[data-test="add-to-cart-sauce-labs-backpack"]';
+    this.menuButton = "#react-burger-cross-btn";
+    this.logoutButton = "#logout_sidebar_link";
+    this.addToCartButton = "#add-to-cart-sauce-labs-backpack";
     this.cartButton = ".shopping_cart_link";
   }
 
-  openStore() {
-    cy.visit(this.storeUrl);
+  clickMenuBotton() {
+    cy.get(this.menuButton).click({ force: true });
     return this;
   }
 
-  clickAddProduct() {
-    cy.get(this.addProductButton).click();
+  clickLogout() {
+    cy.get(this.logoutButton).click();
+    return new LoginPage();
+  }
+
+  clickAddToCart() {
+    cy.get(this.addToCartButton).click();
     return this;
   }
 
   clickCart() {
     cy.get(this.cartButton).click();
-    // TODO: add return
+    return new ShoppingBag();
   }
 }
