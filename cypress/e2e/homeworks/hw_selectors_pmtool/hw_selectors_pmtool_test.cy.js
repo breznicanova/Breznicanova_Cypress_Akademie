@@ -12,11 +12,11 @@ describe("Pmtool HW selectors test", () => {
       .typeUsername("cypress_zima_2024")
       .typePassword("Zima2024Cypress")
       .clickLogin()
-      .clickProjectIcon()
+      .clickProjects()
       .clickAddProject()
       .typeName(projectName)
       .clickSave()
-      .clickDropdownMenu()
+      .clickProfile()
       .clickLogout();
   });
 });
