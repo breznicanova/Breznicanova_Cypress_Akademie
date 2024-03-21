@@ -1,12 +1,14 @@
+import { HeaderSection } from "./common/header_section";
 import { LoginPage } from "./login_page";
 
-export class ProjectPage {
+export class ProjectPage extends HeaderSection {
   constructor() {
+    super();
     this.addProjectButton = 'button[test_id="Add Project"]';
     this.nameInput = 'div[data-testid="Name"] .form-control';
     this.saveButton = 'button[type="submit"]';
-    this.dropdownToggle = "#user_dropdown .dropdown-toggle .fa";
-    this.logoutButton = "#logout";
+    this.pageTitle = "h3.page-title";
+    cy.get(this.pageTitle).should("contain.text", "Projects");
   }
 
   clickAddProject() {
@@ -22,15 +24,5 @@ export class ProjectPage {
   clickSave() {
     cy.get(this.saveButton).click();
     return this;
-  }
-
-  clickDropdownMenu() {
-    cy.get(this.dropdownToggle).click();
-    return this;
-  }
-
-  clickLogout() {
-    cy.get(this.logoutButton).click();
-    return new LoginPage();
   }
 }
