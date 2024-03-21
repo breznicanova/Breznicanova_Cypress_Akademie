@@ -11,6 +11,12 @@ export class LoginPage {
     this.pageHeader = "h3.form-title";
     this.logo = ".login-page-logo img";
     this.rememberMeCheckbox = ".checkbox";
+    this.alertDiv = "div.alert";
+  }
+
+  alertNotExist() {
+    cy.get(this.alertDiv).should("not.exist"); // not visible spadne ak to tam vôbec nie je, používať not.exist
+    return this;
   }
 
   pageHeaderHaveText(headerText) {

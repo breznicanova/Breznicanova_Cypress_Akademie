@@ -4,6 +4,11 @@ describe("Login page tests", () => {
   beforeEach(() => {
     new LoginPage().openPmtool();
   });
+
+  it("Alert not exist after open pmtool", () => {
+    new LoginPage().alertNotExist();
+  });
+
   it("Page header has text 'Login'", () => {
     new LoginPage().pageHeaderHaveText("Login");
   });
