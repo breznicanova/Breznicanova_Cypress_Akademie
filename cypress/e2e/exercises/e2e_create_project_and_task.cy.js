@@ -18,6 +18,7 @@ describe("Create new Project and Task E2E Test", () => {
     cy.log(projectName);
     cy.fixture("upload_test.txt", { encoding: null }).as("uploadFile");
     const taskName = `Breznicanova_TASK_${randomInt}`;
+    const startDate = "2024-03-28";
 
     new ProjectPage()
       .clickAddProject()
@@ -32,6 +33,13 @@ describe("Create new Project and Task E2E Test", () => {
       .selectType("Change")
       .typeName(taskName)
       .assignTask("Petr Fifka")
-      .clickSave();
+      .clickSave()
+      .clickProjectInfo()
+      .projectTitleHasText(projectName)
+      .createdByHasText("Cypress Zima 2024")
+      .dateAddedHasText("02/04/2024")
+      .projectHavePriority("High")
+      .projectHaveStatus("Open")
+      .projectHaveStartDate("28/03/2024");
   });
 });
