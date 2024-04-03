@@ -1,4 +1,5 @@
 import { EshopHeaderSection } from "./common/header_section_eshop";
+import { HomePage } from "./home_page";
 import { MyAccount } from "./success_page";
 
 export class RegisterAccount extends EshopHeaderSection {
@@ -12,6 +13,7 @@ export class RegisterAccount extends EshopHeaderSection {
     this.passwordConfirmInput = "#input-confirm";
     this.continueButton = "input[type='submit']";
     this.policyCheckBox = "input[name='agree']";
+    this.logoImage = "#logo";
   }
   typeFirstName(firstName) {
     cy.get(this.firstNameInput).type(firstName);
@@ -51,5 +53,10 @@ export class RegisterAccount extends EshopHeaderSection {
   clickContinue() {
     cy.get("form").submit();
     return new MyAccount();
+  }
+
+  clickImageTredgate() {
+    cy.get(this.logoImage).click();
+    return new HomePage();
   }
 }

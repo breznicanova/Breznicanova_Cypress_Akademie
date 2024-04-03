@@ -12,7 +12,7 @@ export class EshopHeaderSection {
   }
 
   clickRegister() {
-    const { RegisterAccount } = require("../registration_page"); // !!!!!! aby sa mi to nezacyklilo
+    const { RegisterAccount } = require("../registration_page");
     cy.get(this.registerButton).click();
     return new RegisterAccount();
   }

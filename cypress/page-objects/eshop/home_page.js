@@ -1,6 +1,4 @@
-import { ShoppingCart } from "./cart_page";
 import { EshopHeaderSection } from "./common/header_section_eshop";
-import { IPhone } from "./iphone_page";
 
 export class HomePage extends EshopHeaderSection {
   constructor() {
@@ -8,6 +6,7 @@ export class HomePage extends EshopHeaderSection {
     this.homeUrl = "http://tredgate.com/eshop/";
     this.addIphoneButton = 'button[type="button"][onclick="cart.add(\'40\');"]';
     this.iphoneImage = "div[class='image'] img[title='iPhone']";
+    this.successMessage = ".alert-success";
   }
 
   openEshop() {
@@ -20,8 +19,8 @@ export class HomePage extends EshopHeaderSection {
     return this;
   }
 
-  clickIphone() {
-    cy.get(this.iphoneImage).click();
-    return new IPhone();
+  successMessageIsVisible() {
+    cy.get(this.successMessage).should("be.visible");
+    return this;
   }
 }

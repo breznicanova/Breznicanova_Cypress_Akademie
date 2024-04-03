@@ -1,10 +1,8 @@
 import { HomePage } from "../../../page-objects/eshop/home_page";
 import { faker } from "@faker-js/faker";
-import { IPhone } from "../../../page-objects/eshop/iphone_page";
-import { ShoppingCart } from "../../../page-objects/eshop/cart_page";
 
 describe("Tredgate eshop test", () => {
-  it("IT FAILS !! Open eshop, register account, add product to cart and check its content", () => {
+  it("Open eshop, register account, add product to cart and check its content", () => {
     const firstName = faker.person.firstName();
     const lastName = faker.person.lastName();
     const email = faker.internet.email({
@@ -28,27 +26,15 @@ describe("Tredgate eshop test", () => {
       .typeTelephone(telephone)
       .typePassword(password)
       .typePasswordConfirmation(password)
-      .clickPolicyAgreement();
-    cy.get("form").submit();
-  });
-
-  it.only("Add iPhone to cart", () => {
-    const cart = new ShoppingCart();
-    const iPhone = new HomePage()
-      .openEshop()
+      .clickPolicyAgreement()
+      // .clickContinue()
+      .clickImageTredgate()
       .clickAddToCart()
-      .clickIphone()
-      .savePriceForAssertion()
-      .getSavedPrice();
-
-    new HomePage()
-      .openEshop()
-      .clickAddToCart()
-      .clickIphone()
-      .savePriceForAssertion()
+      .successMessageIsVisible()
       .clickCart()
-      .assertPrice();
-
-    cy.wrap(cart.iphonePrice).should("eq", iPhone);
+      .assertUnitPrice()
+      .assertQuantity()
+      .assertTotalPrice()
+      .clickRemoveIphone();
   });
 });
