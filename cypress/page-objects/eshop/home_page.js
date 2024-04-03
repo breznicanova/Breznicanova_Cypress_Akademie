@@ -1,19 +1,26 @@
-export class HomePage {
+import { EshopHeaderSection } from "./common/header_section_eshop";
+
+export class HomePage extends EshopHeaderSection {
   constructor() {
+    super();
     this.homeUrl = "http://tredgate.com/eshop/";
-    this.userButton = ".caret";
-    this.userRegisterButton = ".dropdown-menu > :nth-child(1) > a";
+    this.addIphoneButton = 'button[type="button"][onclick="cart.add(\'40\');"]';
+    this.iphoneImage = "div[class='image'] img[title='iPhone']";
+    this.successMessage = ".alert-success";
   }
 
-  openUrl() {
+  openEshop() {
     cy.visit(this.homeUrl);
+    return this;
   }
 
-  clickUser() {
-    cy.get(this.userButton).click();
+  clickAddToCart() {
+    cy.get(this.addIphoneButton).click();
+    return this;
   }
 
-  clickUserRegister() {
-    cy.get(this.userRegisterButton).click();
+  successMessageIsVisible() {
+    cy.get(this.successMessage).should("be.visible");
+    return this;
   }
 }
