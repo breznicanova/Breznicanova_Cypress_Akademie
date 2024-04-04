@@ -1,8 +1,12 @@
 import { HeaderSection } from "../common/header_section";
 
 export class ProjectInfoPage extends HeaderSection {
-  constructor() {
-    super();
+  /**
+   *
+   * @param {projectId} used for direct page opening in Atomic Tests
+   */
+  constructor(projectId = "") {
+    super(`module=items/info&path=21-${projectId}`);
     this.projectTitleDiv = ".portlet-title .caption";
     this.dateAddedValue = "tr.form-group-154 td";
     this.createdByValue = "tr.form-group-155 td";

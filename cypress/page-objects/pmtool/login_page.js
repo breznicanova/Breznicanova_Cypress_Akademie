@@ -82,4 +82,19 @@ export class LoginPage {
     cy.get(this.logo).should("be.visible");
     return this;
   }
+
+  usernameIsVisible() {
+    cy.get(this.usernameInput).should("be.visible");
+    return this;
+  }
+
+  usernameHaveValue(username) {
+    cy.get(this.usernameInput).should("have.value", username);
+    return this;
+  }
+
+  passwordIsVisible() {
+    cy.get(this.passwordInput).should("be.visible");
+    return this;
+  }
 }
