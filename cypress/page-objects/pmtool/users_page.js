@@ -1,30 +1,31 @@
+import { customElement } from "../../helpers/custom_element";
 import { HeaderSection } from "./common/header_section";
 
 export class UserPage extends HeaderSection {
   constructor() {
     super("module=items/items&path=1");
-    this.pageTitle = "h3.page-title";
-    this.addUserButton = '[test_id="Add User"]';
-    // cy.get(this.pageTitle).should("contain.text", "Users");
+    this.pageTitle = customElement("h3.page-title");
+    this.addUserButton = customElement('[test_id="Add User"]');
+    // this.pageTitle.get().should("contain.text", "Users");
   }
 
   titleIsVisible() {
-    cy.get(this.pageTitle).should("be.visible");
+    this.pageTitle.get().should("be.visible");
     return this;
   }
 
   titleHaveText(titleText) {
-    cy.get(this.pageTitle).should("have.text", titleText);
+    this.pageTitle.get().should("have.text", titleText);
     return this;
   }
 
   addUserButtonIsVisible() {
-    cy.get(this.addUserButton).should("be.visible");
+    this.addUserButton.get().should("be.visible");
     return this;
   }
 
   addUserButtonHaveText(addUserButtonText) {
-    cy.get(this.addUserButton).should("have.text", addUserButtonText);
+    this.addUserButton.get().should("have.text", addUserButtonText);
     return this;
   }
 }
