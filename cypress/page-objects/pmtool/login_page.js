@@ -1,27 +1,28 @@
+import { customElement } from "../../helpers/custom_element";
 import { HomePage } from "./home_page";
 import { LostPasswordaPage } from "./lost_password_page";
 
 export class LoginPage {
   constructor() {
     this.pmtoolUrl = "http://tredgate.com/pmtool/";
-    this.usernameInput = "#username"; // !!!!!! .usernameInput
-    this.passwordInput = "#password";
-    this.loginButton = ".btn";
-    this.forgetPasswordButton = "#forget_password";
-    this.pageHeader = "h3.form-title";
-    this.logo = ".login-page-logo img";
-    this.rememberMeCheckbox = ".checkbox";
-    this.alertDiv = "div.alert";
+    this.usernameInput = customElement("#username"); // !!!!!! .usernameInput
+    this.passwordInput = customElement("#password");
+    this.loginButton = customElement(".btn");
+    this.forgetPasswordButton = customElement("#forget_password");
+    this.pageHeader = customElement("h3.form-title");
+    this.logo = customElement(".login-page-logo img");
+    this.rememberMeCheckbox = customElement(".checkbox");
+    this.alertDiv = customElement("div.alert");
   }
 
   alertNotExist() {
-    cy.get(this.alertDiv).should("not.exist"); // not visible spadne ak to tam vôbec nie je, používať not.exist
+    this.alertDiv.get().should("not.exist"); // not visible spadne ak to tam vôbec nie je, používať not.exist
     return this;
   }
 
   pageHeaderHaveText(headerText) {
     // !!!!!!!! predávame to parametrom .. kukni pmtool login_page_tests.cy.js
-    cy.get(this.pageHeader).should("have.text", headerText);
+    this.pageHeader.get().should("have.text", headerText);
     return this;
   }
 
@@ -31,70 +32,66 @@ export class LoginPage {
   }
 
   typeUsername(username) {
-    cy.get(this.usernameInput).type(username);
+    this.usernameInput.get().type(username);
     return this;
   }
 
   typePassword(password) {
-    cy.get(this.passwordInput).type(password);
+    this.passwordInput.get().type(password);
     return this;
   }
 
   clickLogin() {
-    cy.get(this.loginButton).click();
+    this.loginButton.get().click();
     return new HomePage();
   }
 
   clickPasswordForgotten() {
-    cy.get(this.forgetPasswordButton).click();
+    this.forgetPasswordButton.get().click();
     return new LostPasswordaPage();
   }
 
   usernameHasPlaceholder(placeholderText) {
-    cy.get(this.usernameInput).should(
-      "have.attr",
-      "placeholder",
-      placeholderText
-    );
+    this.usernameInput
+      .get()
+      .should("have.attr", "placeholder", placeholderText);
     return this;
   }
 
   passwordHasPlaceholder(placeholderText) {
-    cy.get(this.passwordInput).should(
-      "have.attr",
-      "placeholder",
-      placeholderText
-    );
+    this.passwordInput
+      .get()
+      .should("have.attr", "placeholder", placeholderText);
     return this;
   }
 
   rememberMeHasText(rememberMeText) {
-    cy.get(this.rememberMeCheckbox).should("have.text", rememberMeText);
+    this.rememberMeCheckbox.get().should("have.text", rememberMeText);
     return this;
   }
 
   passwordForgottenHasText(elementText) {
-    cy.get(this.forgetPasswordButton).should("have.text", elementText);
+    this.forgetPasswordButton.get().should("have.text", elementText);
     return this;
   }
 
   logoIsVisible() {
-    cy.get(this.logo).should("be.visible");
+    this.logo.get().should("be.visible");
     return this;
   }
 
   usernameIsVisible() {
-    cy.get(this.usernameInput).should("be.visible");
+    this.usernameInput.get().should("be.visible");
     return this;
   }
 
   usernameHaveValue(username) {
-    cy.get(this.usernameInput).should("have.value", username);
+    this.usernameInput.get().should("have.value", username);
     return this;
   }
 
   passwordIsVisible() {
-    cy.get(this.passwordInput).should("be.visible");
+    this.passwordInput.get().should("be.visible");
     return this;
   }
 }
