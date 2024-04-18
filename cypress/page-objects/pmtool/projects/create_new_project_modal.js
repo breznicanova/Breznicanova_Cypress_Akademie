@@ -1,3 +1,4 @@
+import { customElement } from "../../../helpers/custom_element";
 import { ProjectsTasksPage } from "./tasks_page";
 
 export class CreateProjectModal {
@@ -9,6 +10,16 @@ export class CreateProjectModal {
     this.fileUploadXpath =
       '//div[@data-testid="Attachments"]//input[contains(@id, "uploadifive_attachments_upload")]';
     this.saveButton = "button[type='submit']";
+    this.descriptionIframe = customElement("#cke_1_contents iframe");
+  }
+
+  typeDescription(descriptionText) {
+    this.descriptionIframe.get().then((iframe) => {
+      const body = iframe.contents().find("body");
+      cy.wrap(body).as("iframe");
+    });
+    cy.get("@iframe").type(descriptionText);
+    return this;
   }
 
   selectPriority(priority) {
