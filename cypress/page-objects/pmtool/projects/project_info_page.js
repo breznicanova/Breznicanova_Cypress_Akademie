@@ -1,3 +1,4 @@
+import { customElement } from "../../../helpers/custom_element";
 import { HeaderSection } from "../common/header_section";
 
 export class ProjectInfoPage extends HeaderSection {
@@ -13,6 +14,12 @@ export class ProjectInfoPage extends HeaderSection {
     this.priorityValue = "tr.form-group-156 td div";
     this.statusValue = "tr.form-group-157 td div";
     this.startDateValue = "tr.form-group-159 td";
+    this.descriptionDiv = customElement(".content_box_content");
+  }
+
+  descriptionHaveText(descriptionText) {
+    this.descriptionDiv.hasText(descriptionText);
+    return this;
   }
 
   projectTitleHasText(projectTitle) {
