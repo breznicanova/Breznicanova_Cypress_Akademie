@@ -1,5 +1,6 @@
 import { customElement } from "../../helpers/custom_element";
 import { HeaderSection } from "./common/header_section";
+import { AddUserModal } from "./create_new_user_modal";
 
 export class UserPage extends HeaderSection {
   constructor() {
@@ -7,6 +8,11 @@ export class UserPage extends HeaderSection {
     this.pageTitle = customElement("h3.page-title");
     this.addUserButton = customElement('[test_id="Add User"]');
     // this.pageTitle.get().should("contain.text", "Users");
+  }
+
+  clickAddUser() {
+    this.addUserButton.get().click();
+    return new AddUserModal();
   }
 
   titleIsVisible() {
