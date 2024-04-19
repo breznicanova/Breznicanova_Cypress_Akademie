@@ -1,0 +1,20 @@
+[
+  {
+    "name_prefix": "manager_",
+    "access_group": "Manager",
+    "password": "managerPassword1#",
+    "description": "manager"
+  },
+  {
+    "name_prefix": "client_",
+    "access_group": "Client",
+    "password": "clientPassword2#",
+    "description": "client"
+  },
+  {
+    "name_prefix": "developer_",
+    "access_group": "Developer",
+    "password": "developerPassword3#",
+    "description": "developer"
+  }
+]
