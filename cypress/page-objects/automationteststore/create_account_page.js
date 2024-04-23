@@ -79,6 +79,7 @@ export class CreateAccount {
 
   selectCountry(country) {
     cy.get(this.countrySelect).select(country);
+    cy.wait(1000);
     return this;
   }
 

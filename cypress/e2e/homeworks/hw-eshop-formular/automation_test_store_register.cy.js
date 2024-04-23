@@ -6,10 +6,9 @@ describe("Fill Automation Test Store Formular", () => {
   it("Open eshop and register new account", () => {
     const firstName = faker.person.firstName();
     const lastName = faker.person.lastName();
-    const email = faker.internet.email({
+    const email = faker.internet.exampleEmail({
       firstName: firstName,
       lastName: lastName,
-      provider: "email.cz",
     });
     const telephone = faker.phone.number();
     const fax = faker.random.numeric(9);
@@ -34,9 +33,7 @@ describe("Fill Automation Test Store Formular", () => {
       .typeFirstAddress(addressFirst)
       .typeSecondAddress(addressSecond)
       .typeCity(city)
-      .selectCountry("56");
-    cy.wait(1000);
-    new CreateAccount()
+      .selectCountry("56")
       .typeZipCode(zipCode)
       .selectRegion("901")
       .typeLoginName(loginName)
